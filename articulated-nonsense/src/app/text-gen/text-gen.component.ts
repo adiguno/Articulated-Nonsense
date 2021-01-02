@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import * as tf from '@tensorflow/tfjs';
 import * as $ from 'jquery'
@@ -13,8 +12,9 @@ export class TextGenComponent implements OnInit {
   model: any;
   char2idx: object;
   idx2char: string[];
-  text: string = "Hey Marco ";
+  text: string = "Hello ";
   inputTensor: tf.Tensor;
+  predictionLength: number;
 
   async ngOnInit() {
     this.model = await tf.loadLayersModel('../assets/models/model.json');  // load model
@@ -24,9 +24,16 @@ export class TextGenComponent implements OnInit {
     });
     // execute function to get idx2char array
     this.idx2char = await convertIdx(this.char2idx);
+    this.predictionLength = 100;
   };
 
+  onPredictionLengthChange(newPredictionLength) {
+    this.predictionLength = newPredictionLength;
+  }
+
   generate(text) {
+    console.log("Generating new text using ~~derp learning~~")
+
     // check if the user has changed the text and if so reset model state
     if (this.text != text) this.model.resetStates();
     this.text = text;  // update class text
@@ -41,7 +48,7 @@ export class TextGenComponent implements OnInit {
     const idxArray = getNum(this.char2idx, text);
 
     // iterate through producing 100 predictions (characters)
-    for (let i = 0; i < text.length + 100; i++) {
+    for (let i = 0; i < text.length + this.predictionLength; i++) {
       if (i < text.length) {
         // for the length of the text, we are just passing the user input
         this.inputTensor = tf.expandDims([idxArray[i]], 0);  // convert array to compatible tensor

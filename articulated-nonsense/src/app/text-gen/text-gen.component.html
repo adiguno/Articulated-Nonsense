@@ -1,5 +1,7 @@
 <div class="form-group">
 
+  Number of characters to predict: <input #inputNumber type="number" (change)="onPredictionLengthChange(inputNumber.value)" value={{predictionLength}}/><br>
+  
   <label for="nlgInputArea">Begin with some words</label>
   <textarea #generationInput [value]="text" class="form-control" 
             id="nlgInputArea" rows="10"></textarea>
