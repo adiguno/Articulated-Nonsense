@@ -6,6 +6,9 @@
 */
 {
   "files": [],
+  "compilerOptions": {
+    "skipLibCheck": true
+  },
   "references": [
     {
       "path": "./tsconfig.app.json"
