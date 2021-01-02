@@ -37,6 +37,13 @@ export class TextGenComponent implements OnInit {
     // check if the user has changed the text and if so reset model state
     if (this.text != text) this.model.resetStates();
     this.text = text;  // update class text
+
+    // add a space to text if not present
+    const endSpaceRegex : RegExp = /\s$/;
+    if (endSpaceRegex.test(text)) {
+      this.text = this.text.concat(" ");
+    }
+
     text = (text.length > 100) ? (text.slice(text.length-100, text.length)) : (text);  // slice long text
 
     let y_hat: tf.Tensor  // initialize variables we will be using
@@ -69,6 +76,8 @@ export class TextGenComponent implements OnInit {
         this.text = this.text.concat(this.idx2char[yIdx]);
       };
     };
+
+    this.text = this.text.replace(/\s+/g, " "); // remove extra whitespaces
   };
 };
 
