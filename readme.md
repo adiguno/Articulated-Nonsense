@@ -19,7 +19,9 @@
         - `PATH='/Users/myuser/Library/Python/3.8/bin'` to set temporary path
     3. go to your model dir, and run the command:
     `$ tensorflowjs_converter --input_format=keras model.h5 ./`
-
+- to deploy via gh-pages:
+    - taking advantage of `ng deploy` Angular CLI's automated deployment process
+    1. Add the builder package via `ng add angular-cli-ghpages`
     
 # Dependencies
 0. node/angular cli
