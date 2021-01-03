@@ -2,7 +2,7 @@
 - An exercise in TFJS and Angular
 
 # todo
-- [ ] deploy using gh-pages
+- [x] deploy using gh-pages
 - [ ] add acknowledgement to orginal author in app
 
 # Notes
@@ -22,6 +22,8 @@
 - to deploy via gh-pages:
     - taking advantage of `ng deploy` Angular CLI's automated deployment process
     1. Add the builder package via `ng add angular-cli-ghpages`
+    2. `ng deploy --base-href=/Articulated-Nonsense/`
+        - the generated js (gh-pages branch) could not find the model.json in `assets/models`, had to manually change js file to use `./assets/models/model.json` instead of the generated `../assets/models/model.json`
     
 # Dependencies
 0. node/angular cli
