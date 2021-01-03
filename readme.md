@@ -1,5 +1,6 @@
 # Angular projects with TensorFlow JS
 - An exercise in TFJS and Angular
+- published at https://adiguno.github.io/Articulated-Nonsense/ 
 
 # todo
 - [x] deploy using gh-pages
